@@ -104,7 +104,9 @@ void delete_node()
             tem->next=tem->next->next;
             return;
         }
+        tem=tem->next;
     }
+    
 }
 
 
