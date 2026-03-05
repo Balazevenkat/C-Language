@@ -1,0 +1,19 @@
+*p  it refers to the sames as char like 's' 'r' ..
+were p refer to pointer hold the location p++ location moves a head
+*p++ means 's' -> 't' 
+
+defalut p size is 8 bytes
+
+*p size is varay by the data type 
+
+p → pointer, holds an address
+
+*p → value at that address ('s', 'r', etc.)
+
+p++ → moves pointer forward by sizeof(type)
+
+*p++ → prints current value, then moves pointer
+
+Pointer size → 4 or 8 bytes (architecture dependent)
+
+*p size → depends on data type
