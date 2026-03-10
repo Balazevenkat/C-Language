@@ -17,3 +17,13 @@ p++ → moves pointer forward by sizeof(type)
 Pointer size → 4 or 8 bytes (architecture dependent)
 
 *p size → depends on data type
+
+-----------------
+Code / Text
+-----------------
+Data segment (global/static)
+-----------------
+Stack (local variables)
+-----------------
+Heap (malloc/realloc/free)
+-----------------
