@@ -1,0 +1,112 @@
+memmove(str, str+2, strlen(str+2)+1);
+
+Example string:
+
+ABCDEF
+
+Memory layout:
+
+Index : 0 1 2 3 4 5 6
+Value : A B C D E F \0
+
+Pointers become:
+
+dest → str      → index 0
+src  → str+2    → index 2
+
+So we copy from index 2 → index 0.
+
+Since:
+
+dest < src
+
+memmove() will do forward copy.
+
+Step-by-step copying
+
+Length copied:
+
+strlen(str+2)+1
+
+str+2 = "CDEF"
+
+strlen("CDEF") = 4
++1 for '\0'
+Total = 5 bytes
+
+So we copy:
+
+C D E F \0
+Iteration 1
+dest[0] = src[0]
+str[0] = str[2]
+
+String becomes:
+
+CBCDEF
+Iteration 2
+dest[1] = src[1]
+str[1] = str[3]
+
+String becomes:
+
+CDCDEF
+Iteration 3
+dest[2] = src[2]
+str[2] = str[4]
+
+String becomes:
+
+CDEDEF
+Iteration 4
+dest[3] = src[3]
+str[3] = str[5]
+
+String becomes:
+
+CDEF EF
+Iteration 5
+dest[4] = src[4]
+str[4] = str[6] → '\0'
+
+Final string:
+
+CDEF
+Important clarification
+
+You said:
+
+A overwritten with C so string becomes BCDEF automatically.
+
+Not exactly.
+
+What actually happens is:
+
+Characters are copied one by one
+
+The null terminator \0 is copied at the end
+
+That is what shortens the string
+
+So the string becomes "CDEF" only after the final copy of \0.
+
+Visual memory movement
+
+Before:
+
+A B C D E F \0
+↑
+dest
+
+    ↑
+    src
+
+After memmove:
+
+C D E F \0 F \0
+
+String seen by printf:
+
+CDEF
+
+Because \0 stops printing.
