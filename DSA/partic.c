@@ -115,7 +115,7 @@ void prime_node()
             }
         }
         else
-        {   ptr=tem;
+        {   ptr=tem;//prev should always point to the last valid (non-deleted) node
             tem=tem->next;
         }
     }
