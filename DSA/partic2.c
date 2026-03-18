@@ -1,35 +1,51 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef struct node 
-{
+typedef struct node{
     int data;
-    struct node *next;
+    struct node*next;
 }NODE;
 
-NODE *head=NULL;
+NODE*head=NULL;
 
-NODE*creat_node(int val)
+NODE *creat_node(int n)
 {
-    NODE *newnode=(NODE*)calloc(1,sizeof(NODE));
+    NODE*newnode=(NODE*)calloc(1,sizeof(NODE));
     
-    newnode->data=val;
+    newnode->data=n;
     newnode->next=NULL;
     
     return newnode;
 }
 
+void insert_beg(int val)
+{
+    NODE *node=creat_node(val);
+    if(head==NULL)
+    {
+        printf("This is first node %d..\n",val);
+        node->next=head;
+        head=node;
+        
+        return;
+    }
+    
+    node->next=head;
+    head=node;
+}
+
 void insert_end(int num)
 {
     NODE *node=creat_node(num);
-    
     if(head==NULL)
     {
-        printf("This is first node %d",num);
+         printf("This is first node %d..\n",num);
         node->next=head;
         head=node;
+        
         return;
     }
+    
     NODE*tem=head;
     
     while(tem->next)
@@ -39,13 +55,96 @@ void insert_end(int num)
     tem->next=node;
 }
 
+void display()
+{
+    NODE*tem=head;
+    
+    if(tem==NULL)
+    {
+        printf("List is empty...\n");
+        return;
+    }
+    
+    while(tem)
+    {
+        printf("%d ->",tem->data);
+        tem=tem->next;
+    }
+    
+    printf("NULL\n");
+}
+
+void remove_dup()
+{
+    NODE*ptr=NULL;
+    
+    if(head==NULL || head->next==NULL)
+    {
+        printf("List invalid for remove...\n");
+        return;
+    }
+    ptr=head;
+    NODE*tem=NULL,*prev=NULL;
+    while(ptr)
+    {
+        prev=ptr;
+        tem=ptr->next;
+        while(tem)
+        {
+            if(ptr->data==tem->data)
+            {
+                prev->next=tem->next;
+                free(tem);
+                tem=prev->next;
+            }
+            else
+            {
+                prev=tem;
+                tem=tem->next;
+            }
+        }
+        ptr=ptr->next;
+    }
+}
+void revers_node()
+{
+    NODE *cur=head;
+    NODE *prev=NULL;
+    
+    NODE*tem=NULL;
+    while(cur)
+    {
+        tem=cur->next;
+        cur->next=prev;
+        prev=cur;
+        cur=tem;
+    }
+    head=prev;
+}
+NODE *revers(NODE *cur)
+{
+    NODE*prev=NULL;
+    NODE*tem=NULL;
+    
+    while(cur)
+    {
+        tem=cur->next;
+        cur->next=prev;
+        prev=cur;
+        cur=tem;
+    }
+    return prev;
+}
+
 int is_prime(int n)
 {
-    if(n<=1)
+    if(n<=0)
     return 0;
     
     if(n==2)
-    return 1;
+    {
+        return 1;
+    }
     
     for(int i=2;i*i<=n;i++)
     {
@@ -55,19 +154,33 @@ int is_prime(int n)
     
     return 1;
 }
-
-NODE *reveres(NODE *cur)
+void prime_node()
 {
-    NODE*tem=NULL,*prev=NULL;
-    while(cur)
+    NODE *tem=head;
+    NODE *ptr=NULL;
+    while(tem)
     {
-        tem=cur->next;
-        cur->next=prev;
-        prev=cur;
-        cur=tem;
+        if(is_prime(tem->data))
+        {
+            if(ptr==NULL)
+            {
+            head=head->next;
+            free(tem);
+            tem=head;
+            }
+            else
+            {
+                ptr->next=tem->next;
+                free(tem);
+                tem=ptr->next;
+            }
+        }
+        else
+        {
+         ptr=tem;
+         tem=tem->next;   
+        }
     }
-    
-    return prev;
 }
 
 void palidrom()
@@ -81,95 +194,30 @@ void palidrom()
         fast=fast->next->next;
     }
     
-    slow=reveres(slow);
+    slow=revers(slow);
     
-    NODE*first=head;
-    NODE*second=slow;
+    NODE*first=head,*second=slow;
     
     while(first && second)
     {
         if(first->data != second->data)
         {
-            printf("\n not palidrom..\n");
-            reveres(slow);
+            printf("NOt a palidrom...\n");
+            revers(slow);
             return;
         }
-        
         second=second->next;
         first=first->next;
     }
-    
-    printf("\npalidrom...\n");
-    reveres(slow);
-    
+    printf("Palidrom...\n");
+    revers(slow);
+    return;
 }
-void prime_list()
+void sort()
 {
-    NODE *tem=head;
-    NODE *ptr=NULL;
-    while(tem)
-    {
-        if(is_prime(tem->data))
-        {
-            if(ptr==NULL)
-            {
-            head=tem->next;
-            free(tem);
-            tem=head;
-            }
-          else
-            {
-                ptr->next=tem->next;
-                free(tem);
-                tem=ptr->next;
-            }
-        }
-            else
-            {
-                ptr=tem;
-                tem=tem->next;
-            }
-    }
-}
-
-void remove_duplicates()
-{
-    NODE*tem=NULL;
-    
-    if(head==NULL || head->next==NULL)
-    {
-        printf("list is invalid to remove duplicates\n");
-        return;
-    }
-    tem=head;
-    NODE*tem1=NULL,*ptr=NULL;
-    while(tem)
-    {
-        ptr=tem;
-        tem1=tem->next;
-        while(tem1)
-        {
-            if(tem->data == tem1->data)
-            {
-                ptr->next=tem1->next;
-                free(tem1);
-                tem1=ptr->next;
-            }
-            else
-            {
-                ptr=tem1;
-                tem1=tem1->next;
-            }
-        }
-        tem=tem->next;
-    }
-}
-
-void sort_list()
-{
-    NODE *ptr=head;
+    NODE*ptr=head;
     NODE*lptr=NULL;
-    int tem=0,swap;
+    int swap,tem=0;
     
     do{
         swap=0;
@@ -189,84 +237,47 @@ void sort_list()
     }while(swap);
 }
 
-void revers_list()
-{
-    NODE *ptr=head;
-    if(head==NULL || head->next==NULL)
-    {
-        printf("invalid to revers..\n");
-        return;
-    }
-    NODE*prev=NULL,*tem=NULL;
-    while(ptr)
-    {
-        tem=ptr->next;
-        ptr->next=prev;
-        prev=ptr;
-        ptr=tem;
-    }
-    head=prev;
-}
-
-void display()
-{
-    if(head==NULL)
-    {
-        printf("List is empty...\n");
-        return;
-    }
-    
-    NODE*tem=head;
-    while(tem)
-    {
-        printf("%d ->",tem->data);
-        tem=tem->next;
-    }
-    printf("NULL\n");
-}
-
 int main()
 {
     char c;
     while(1)
     {
-     printf("\n opt:1.insert_end 2.display 3.remove_duplicates\n");
-     printf("4.sort_list 5.revers_list 6.palidrom 7.prime_list 8.quit\n");
-     scanf(" %c",&c);
-     switch(c)
-     {
-        case '1':
-        int num;
-        scanf("%d",&num);
-        insert_end(num);
-        break;
-        
-        case '2':
-        display();
-        break;
-        
-        case '3':
-        remove_duplicates();
-        break;
-        
-        case '4':
-        sort_list();
-        break;
-        
-        case '5':
-        revers_list();
-        break;
-        
-        case '6':
-        prime_list();
-        break;
-        
-        case '7':
-        palidrom();
-        break;
-        
-        case '8':
-        return 0;
-     }
+        printf("1.insert_end 2.insert_beg 3.display 4.sort\n");
+        printf("5.remove_dup 6.palidrom 7.revers 8.prime_node\n");
+        printf("9.quit\n");
+        scanf(" %c",&c);
+        switch(c)
+        {
+            case '1':int num;
+            scanf("%d",&num);
+            insert_end(num);
+            break;
+            
+            case '2':int n;
+            scanf("%d",&n);
+            insert_beg(n);
+            break;
+            
+            case '3':display();
+            break;
+            
+            case '4':sort();
+            break;
+            
+            case '5':remove_dup();
+            break;
+            
+            case '6':palidrom();
+            break;
+            
+            case '7':revers_node();
+            break;
+            
+            case '8':prime_node();
+            break;
+            
+            case '9':return 0;
+            
+        }
     }
 }
