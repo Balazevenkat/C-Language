@@ -1,0 +1,121 @@
+🔷 1️⃣ Pointer to variable
+int *p;
+
+👉 Holds address of a single int variable
+
+🔷 2️⃣ Array of pointers
+int *arr[5];
+
+👉 Array containing 5 pointers (each points to an int)
+
+🔷 3️⃣ Pointer to an array
+int (*p)[5];
+
+👉 Pointer to entire array of 5 integers
+
+🔷 4️⃣ Pointer to pointer (double pointer)
+int **p;
+
+👉 Stores address of another pointer
+
+🔷 5️⃣ Triple pointer
+int ***p;
+
+👉 Pointer → pointer → pointer → data
+
+🔷 6️⃣ Array of pointer to pointer
+int **arr[5];
+
+👉 Array of 5 elements, each is a pointer to pointer
+
+🔷 7️⃣ Pointer to array of pointers
+int *(*p)[5];
+
+👉 Pointer to an array of 5 pointers
+
+🔷 8️⃣ Function pointer
+int (*fp)(int, int);
+
+👉 Pointer to a function
+
+🔷 9️⃣ Array of function pointers
+int (*fp[5])(int,int);
+
+👉 Array of 5 function pointers
+
+🔷 🔟 Pointer to function pointer
+int (**fp)(int,int);
+
+👉 Pointer to a function pointer
+
+🔷 1️⃣1️⃣ Void pointer
+void *p;
+
+👉 Generic pointer (can hold any type address)
+
+🔷 1️⃣2️⃣ Pointer to const
+const int *p;
+
+👉 Cannot modify value through pointer
+
+🔷 1️⃣3️⃣ Const pointer
+int *const p;
+
+👉 Pointer cannot change address
+
+🔷 1️⃣4️⃣ Const pointer to const
+const int *const p;
+
+👉 Cannot change value or address
+
+🔷 1️⃣5️⃣ Pointer to structure
+struct node *p;
+
+👉 Pointer to struct (used in linked list)
+
+🔷 1️⃣6️⃣ Array pointer vs normal array (IMPORTANT)
+int arr[5];
+int *p = arr;
+
+👉 p points to first element
+
+int (*p)[5] = &arr;
+
+👉 p points to whole array
+
+🔷 🔥 Most Confusing Difference
+int *a[5];   // array of pointers
+int (*a)[5]; // pointer to array
+
+👉 Brackets decide everything
+
+🔷 Easy Trick to Understand
+
+Read from inside out:
+
+int (*p)[5];
+
+👉 p is pointer → to array → of 5 ints
+
+🔷 Summary Table
+Syntax	Meaning
+int *p	pointer to int
+int *a[5]	array of pointers
+int (*p)[5]	pointer to array
+int **p	pointer to pointer
+int (*fp)()	function pointer
+🔷 Final Interview Trick
+
+👉 Whenever confused:
+
+Start from variable name → go right → then left
+🔷 One-line Memory Trick
+
+👉
+*“[] > () > ” (priority)
+
+[] (array) highest
+
+() (function)
+
+* (pointer)
