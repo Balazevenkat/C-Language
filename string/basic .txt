@@ -14,7 +14,7 @@ Visualizing the Difference
 Imagine an array: ['a', 'x', 'y', 'z']
 *ptr++: You get 'a', and the pointer now points at 'x'.
 *(ptr + 1): You look at 'x', but the pointer stays at 'a'.
-
+(*ptr)++: 'a' changes to 'b'. The array is now ['b', 'x', 'y', 'z']
 
 defalut p size is 8 bytes
 
