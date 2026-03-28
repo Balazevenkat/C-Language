@@ -2,6 +2,20 @@
 were p refer to pointer hold the location p++ location moves a head
 *p++ means 's' -> 't' 
 
+Quick Comparison Table
+Expression	What it does	Result if ptr is at 'a'
+(*ptr)++	Increments the value at the current address.	                      'b' (Pointer stays put)
+*ptr++	Returns current value, then moves pointer to next address.	          'a' (Pointer moves forward)
+*(ptr + 1)	Peeks at the value in the next address.	                           Whatever is next in memory
+ptr = head	Moves the pointer back to the start.	                             The first character of the array
+
+
+Visualizing the Difference
+Imagine an array: ['a', 'x', 'y', 'z']
+*ptr++: You get 'a', and the pointer now points at 'x'.
+*(ptr + 1): You look at 'x', but the pointer stays at 'a'.
+
+
 defalut p size is 8 bytes
 
 *p size is varay by the data type 
