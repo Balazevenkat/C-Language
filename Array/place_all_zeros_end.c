@@ -22,7 +22,7 @@ void place_zeros_end(int *arr,int index)
   {
       if(arr[i]==0)
       {
-          memmove(&arr[i],&arr[i+1],(index-i)*sizeof(int));
+          memmove(&arr[i],&arr[i+1],(index-i-1)*sizeof(int));
           arr[index--]=0;//decrement 
           i--;//recheck
       }
