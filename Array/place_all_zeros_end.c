@@ -16,13 +16,14 @@
     arr[i]=0;
 }
 */
-void place_zeros_end(int *arr,int index)
+void place_zeros_end(int *arr,int n)
 {
+    int index=n-1;
   for(int i=0;i<index;i++)//relfect here
   {
       if(arr[i]==0)
       {
-          memmove(&arr[i],&arr[i+1],(index-i-1)*sizeof(int));
+          memmove(&arr[i],&arr[i+1],(index-i)*sizeof(int));
           arr[index--]=0;//decrement 
           i--;//recheck
       }
