@@ -69,7 +69,7 @@ void sorted_order()
             }
             ptr1=ptr1->next;
         }
-         lptr=ptr1;                             //lptr (pointer last)  updates 
+         lptr=ptr1;                             //lptr (pointer last)  updates were to reduce the time waste using lptr
     }while(swap);
     
     
