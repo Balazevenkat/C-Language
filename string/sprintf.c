@@ -15,3 +15,19 @@ int main()
     
    puts(str);
 }
+
+//********************************************************************
+#include <stdio.h>
+
+int main() {
+    char buffer[50];
+    int hexValue = 255;
+    // Converts 255 to string "ff"
+    sprintf(buffer, "%x", hexValue); 
+    printf("Lowercase: %s\n", buffer);
+
+    // Converts 255 to string "FF"
+    sprintf(buffer, "%X", hexValue); 
+    printf("Uppercase: %s\n", buffer);
+    return 0;
+}
