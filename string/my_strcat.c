@@ -13,6 +13,8 @@ void my_strcat(char *des,char*src)
     des++;
     src++;
     }
+
+    *des='\0';
 }
 
 int main()
