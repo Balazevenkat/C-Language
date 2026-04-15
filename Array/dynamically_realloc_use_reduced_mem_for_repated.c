@@ -44,7 +44,8 @@ int main()
             }
         }
     }
-    
+
+    //here in this case of problem code reduces the dynamic allocation,as perviously allocated
     arr=realloc(arr,n*sizeof(int));
     
     printf("\n******************************************************************\n");
