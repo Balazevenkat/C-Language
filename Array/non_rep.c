@@ -58,6 +58,8 @@ int main()
     
 }
 
+
+
 int main()
 {
     int n,found,cnt=0,flag=1;
