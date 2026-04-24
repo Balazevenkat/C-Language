@@ -76,3 +76,57 @@ int main()
     
     check_anagram(str1,str2);
 }
+
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main()
+{
+    char str1[30],str2[30];
+    
+    fgets(str1,30,stdin);
+    str1[strlen(str1)-1]='\0';
+    
+    fgets(str2,30,stdin);
+    str2[strlen(str2)-1]='\0';
+    
+    if(strlen(str1)!=strlen(str2))
+    {printf("Not an anagram strings");
+    return 0;
+    }
+    
+    int flag=1,found=1;
+    char*str=str1;
+    while(*str)
+    {
+        char *ptr=str2;
+        while(*ptr)
+        {
+            if(*ptr==*str)
+            {
+            flag=1;    
+            break;
+            }
+            else
+            flag=0;
+            
+            ptr++;
+        }
+        
+        if(flag==0)
+        {
+            found=0;
+            printf("Not an anagram strings");
+            break;
+        }
+       str++;
+    }
+    
+    if(found)
+    printf("Anagram strings");
+    
+    
+    
+}
