@@ -42,6 +42,7 @@ void insert_end(int val)
     
     tem->next=node;
 }
+//current, runner, tem refer cpp
 
 void remove_dup()
 {
