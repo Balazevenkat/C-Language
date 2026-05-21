@@ -22,6 +22,7 @@ int main()
     
     //int --->word swap   8
     unsigned int num2=0x12345678;
+
     
     num2=(num2>>16)|(num2<<16);
     
