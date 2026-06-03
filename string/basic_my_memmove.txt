@@ -1,3 +1,4 @@
+
 memmove(str, str+2, strlen(str+2)+1);
 
 Example string:
