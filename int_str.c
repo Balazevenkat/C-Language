@@ -11,6 +11,7 @@ int main()
     
     printf("%s",str);
 }
+
 /_______________second type_____________________/
 
 #include<stdio.h>
