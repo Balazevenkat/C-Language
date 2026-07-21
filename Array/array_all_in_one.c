@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include<string.h>
 
+
 void check_rep(int arr[],int n)
 {
     int cnt=0;
