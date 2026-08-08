@@ -1,0 +1,12 @@
+- **Tools:** Keil µVision, Proteus, Git, Linux
+  ### 🛠️ Key Projects
+- **IoT Dual Mode Set-Point Control System**  
+  UART-based Wi-Fi communication, SPI EEPROM, ADC (LM35), LCD display  
+
+- **Time Guard Access Shield System**  
+  RTC-based time-controlled access system using GPIO and interrupts  
+
+- **Smart Ration Distribution System (IoT)**  
+  Embedded-controlled secure distribution system  
+
+---
