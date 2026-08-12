@@ -6,6 +6,7 @@ int main()
     
     //char -->nibble   4
     
+   // tkbkug
     unsigned char num=0xAB;
     num=(num>>4)|(num<<4);
     
