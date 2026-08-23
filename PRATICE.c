@@ -12,7 +12,7 @@ int main()
 		return 0;
 	}
 	int cnt=0;
-	for(int i=31; i>=0; i--)
+	for(int i=31;i>=0;i--)
 	{
 		if((n>>i)&1 == 1 && (n>>(i-1))&1 == 1)
 			cnt++;
